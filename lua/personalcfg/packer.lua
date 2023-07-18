@@ -11,15 +11,27 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  require("rose-pine").setup({ disable_italics = true, })
+--  use({
+--      'rose-pine/neovim',
+--      as = 'rose-pine',
+--      config = function()
+--    	  require("rose-pine").setup({ disable_italics = true, })
+--
+--    	  vim.cmd('colorscheme rose-pine')
+--      end
+--  })
 
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+-- use {
+--     "rockyzhang24/arctic.nvim",
+--     as = "arctic",
+--     requires = {"rktjmp/lush.nvim"},
+--      config = function()
+--    	  require("arctic").setup({ disable_italics = true, })
+--
+--    	  vim.cmd('colorscheme arctic')
+--      end
+-- }
+ use ('navarasu/onedark.nvim')
 
   use ('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
   use ('nvim-treesitter/playground')
