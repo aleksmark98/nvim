@@ -1,0 +1,71 @@
+--TODO comment plugin https://github.com/terrortylor/nvim-comment This file can be loaded by calling `lua require('plugins')` from your init.vim
+
+-- Only required if you have packer configured as `opt`
+vim.cmd [[packadd packer.nvim]]
+
+return require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.2',
+	  -- or                            , branch = '0.1.x',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use({
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  require("rose-pine").setup({ disable_italics = true, })
+
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  })
+
+  use ('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
+  use ('nvim-treesitter/playground')
+  use ('theprimeagen/harpoon')
+  use ('mbbill/undotree')
+  use ('tpope/vim-fugitive')
+  use {
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v2.x',
+      requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},             -- Required
+          {                                      -- Optional
+          'williamboman/mason.nvim',
+          run = function()
+              pcall(vim.cmd, 'MasonUpdate')
+          end,
+          },
+          {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},     -- Required
+          {'hrsh7th/cmp-nvim-lsp'}, -- Required
+          {'L3MON4D3/LuaSnip'},     -- Required
+      }
+  }
+use {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+}
+
+use {
+    'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
+    config = function()
+        require('toggle_lsp_diagnostics').init()
+    end
+}
+
+
+-- TODO learn undotree
+-- TODO choose comment plugin
+-- https://github.com/terrortylor/nvim-comment
+-- https://github.com/numToStr/Comment.nvim
+
+end)
