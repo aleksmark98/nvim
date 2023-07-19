@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   }
   use ('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
   use ('nvim-treesitter/playground')
+  use ('nvim-treesitter/nvim-treesitter-context') -- sticky function definitions
   use ('theprimeagen/harpoon')
   use ('mbbill/undotree')
   use ('tpope/vim-fugitive')
@@ -50,6 +51,13 @@ use {
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
+}use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup({
+            mappings = { extra = false },
+        })
+    end
 }
 
 -------- AESTHETICS
@@ -95,8 +103,4 @@ use {
 }
 
 -- TODO learn undotree
--- TODO choose comment plugin
--- https://github.com/terrortylor/nvim-comment
--- https://github.com/numToStr/Comment.nvim
-
 end)

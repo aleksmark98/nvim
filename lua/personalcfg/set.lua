@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 -- hide command line - appear over the statusline when used
 -- customizing the satusline: https://shapeshed.com/vim-statuslines/
 vim.o.cmdheight=0
-vim.opt.laststatus=2
+vim.opt.laststatus=3
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
