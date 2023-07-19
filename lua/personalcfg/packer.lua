@@ -83,8 +83,13 @@ use {
     require('lualine').setup({
        options = {
            theme = 'moonfly',
-           icons_enabled = true,
-       }
+           icons_enabled = false,
+       },
+       sections = {
+           lualine_x = {},
+           lualine_y = {},
+           lualine_z = { "os.date('%X')"},
+       },
     })
   end,
 }
