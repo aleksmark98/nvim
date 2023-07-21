@@ -7,4 +7,4 @@
 
 ## Acknowledgements
 
-Based on [ThePrimeaen setup](https://github.com/ThePrimeagen/init.lua).
+Based on [ThePrimeagen setup](https://github.com/ThePrimeagen/init.lua).
