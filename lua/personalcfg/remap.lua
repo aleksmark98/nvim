@@ -40,3 +40,16 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- move to an open buffer
 vim.keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
+
+-- easier windows management
+vim.keymap.set({ "n", "v"}, "<A-h>", "<C-w>h")
+vim.keymap.set({ "n", "v"}, "<A-j>", "<C-w>j")
+vim.keymap.set({ "n", "v"}, "<A-k>", "<C-w>k")
+vim.keymap.set({ "n", "v"}, "<A-l>", "<C-w>l")
+
+vim.keymap.set("n", "<F5>", "<cmd>vertical resize -4<CR>")
+vim.keymap.set("n", "<F6>", "<cmd>resize +4<CR>")
+vim.keymap.set("n", "<F7>", "<cmd>resize -4<CR>")
+vim.keymap.set("n", "<F8>", "<cmd>vertical resize +4<CR>")
+-- this goofy map is bcuz resize doesn't fully hide cmdline
+vim.keymap.set("n", "<leader><F6>", "<cmd>set cmdheight=0<CR>")

@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
     -- use ('nvim-treesitter/playground') -- show treesitter info, might use later
     use ('nvim-treesitter/nvim-treesitter-context') -- sticky function definitions
     use ('theprimeagen/harpoon')
-    -- use ('mbbill/undotree') -- TODO learn undotree
+    -- use ('mbbill/undotree') -- TODO: learn undotree
     use ('tpope/vim-fugitive')
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup({
-                mappings = { extra = false }, -- dont need newline comment mapping
+                mappings = { extra = false },
             })
         end
     }
