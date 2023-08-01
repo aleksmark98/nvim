@@ -14,6 +14,10 @@ lsp.ensure_installed({
 	'dockerls',
 })
 
+require('lspconfig').clangd.setup({
+  cmd = { "clangd", "--completion-style=detailed" }
+})
+
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
