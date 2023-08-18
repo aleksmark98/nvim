@@ -5,6 +5,7 @@ vim.keymap.set("n", "<leader>h", function()
     vim.cmd("set hlsearch!")
 end)
 
+
 -- move a selection up and down (autoindents)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -34,7 +35,7 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 --vim.keymap.set("n", "<leader>j", "<cmd>lprev<C>zz")
 
 -- start replacing word under cursor
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>rp", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 --sth with creating an executable, idk might understand and use later
 --vim.keygap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
@@ -46,6 +47,10 @@ vim.keymap.set({ "n", "v"}, "<A-h>", "<C-w>h")
 vim.keymap.set({ "n", "v"}, "<A-j>", "<C-w>j")
 vim.keymap.set({ "n", "v"}, "<A-k>", "<C-w>k")
 vim.keymap.set({ "n", "v"}, "<A-l>", "<C-w>l")
+
+vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+vim.keymap.set("n", "<leader>ss", "<cmd>split<CR><C-W>w")
+vim.keymap.set("n", "<leader>vs", "<cmd>vsplit<CR><C-W>w")
 
 vim.keymap.set("n", "<F5>", "<cmd>vertical resize -4<CR>")
 vim.keymap.set("n", "<F6>", "<cmd>resize +4<CR>")
