@@ -1,6 +1,4 @@
 --This file can be loaded by calling `lua require('plugins')` from your init.vim
---TODO add surround
---TODO add bracket matching / pairs
 --TODO add align
 
 -- Only required if you have packer configured as `opt`
@@ -69,6 +67,19 @@ return require('packer').startup(function(use)
     use {
         'stevearc/aerial.nvim',
         config = function() require('aerial').setup() end
+    }
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
     }
     -- AESTHETICS
     ---- COLOR THEME
