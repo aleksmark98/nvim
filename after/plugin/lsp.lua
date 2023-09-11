@@ -70,3 +70,10 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+local cmp_action = require('lsp-zero').cmp_action()
+cmp.setup({
+  mapping = {
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+  }
+})
