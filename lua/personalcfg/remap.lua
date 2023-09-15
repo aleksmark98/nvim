@@ -40,7 +40,8 @@ vim.keymap.set("n", "<leader>rp", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 --vim.keygap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- move to an open buffer
-vim.keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
+--telescope can do this
+--vim.keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
 
 -- easier window navigation
 vim.keymap.set({ "n", "v"}, "<A-h>", "<C-w>h")

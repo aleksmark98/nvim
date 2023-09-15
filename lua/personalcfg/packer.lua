@@ -49,6 +49,36 @@ return require('packer').startup(function(use)
             require('toggle_lsp_diagnostics').init()
         end
     }
+    -- DAP setup
+    use { "mfussenegger/nvim-dap" }
+    use {
+        "jay-babu/mason-nvim-dap.nvim",
+        config = function()
+            require'mason-nvim-dap'.setup({
+                ensure_installed = { "codelldb"}
+            })
+        end
+    }
+    use {
+    "rcarriga/nvim-dap-ui",
+    requires = {"mfussenegger/nvim-dap"},
+    config = function()
+        local dap = require("dap")
+        local dapui = require("dapui")
+        dapui.setup()
+        dap.listeners.after.event_inialized["dapui_config"] = function()
+            dapui.open()
+        end
+        dap.listeners.after.event_terminated["dapui_config"] = function()
+            dapui.close()
+        end
+        dap.listeners.after.event_exited["dapui_config"] = function()
+            dapui.close()
+        end
+    end
+    }
+    use { "theHamsta/nvim-dap-virtual-text" }
+
     use {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
