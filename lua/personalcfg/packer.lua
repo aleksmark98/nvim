@@ -114,7 +114,8 @@ return require('packer').startup(function(use)
     }
     -- AESTHETICS
     ---- COLOR THEME
-    use ('navarasu/onedark.nvim')
+    --use ('navarasu/onedark.nvim')
+    use ('folke/tokyonight.nvim')
     ---- STATUSLINE
     use {
         'nvim-lualine/lualine.nvim',
