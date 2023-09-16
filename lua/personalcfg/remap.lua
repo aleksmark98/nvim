@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>rw", vim.cmd.Ex)
 
-vim.keymap.set("n", "<leader>h", function()
+vim.keymap.set("n", "<leader>ih", function()
     vim.cmd("set hlsearch!")
 end)
 
@@ -51,11 +51,11 @@ vim.keymap.set({ "n", "v"}, "<A-l>", "<C-w>l")
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
 vim.keymap.set("n", "<leader>ss", "<cmd>split<CR><C-W>w")
-vim.keymap.set("n", "<leader>vs", "<cmd>vsplit<CR><C-W>w")
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR><C-W>w")
 
-vim.keymap.set("n", "<F5>", "<cmd>vertical resize -4<CR>")
-vim.keymap.set("n", "<F6>", "<cmd>resize +4<CR>")
-vim.keymap.set("n", "<F7>", "<cmd>resize -4<CR>")
-vim.keymap.set("n", "<F8>", "<cmd>vertical resize +4<CR>")
+vim.keymap.set("n", "<S-F5>", "<cmd>vertical resize -4<CR>")
+vim.keymap.set("n", "<S-F6>", "<cmd>resize +4<CR>")
+vim.keymap.set("n", "<S-F7>", "<cmd>resize -4<CR>")
+vim.keymap.set("n", "<S-F8>", "<cmd>vertical resize +4<CR>")
 -- this goofy map is bcuz resize doesn't fully hide cmdline
 vim.keymap.set("n", "<leader><F6>", "<cmd>set cmdheight=0<CR>")
