@@ -108,14 +108,7 @@ return {
         config = function()
             require('aerial').setup({
                 backends = { "lsp", "treesitter", "markdown", "man" },
-
-                
             })
-
-
-            -- -- Jump forwards/backwards with '{' and '}'
-            -- vim.keymap.set('n', '[[', '<cmd>AerialPrev<CR>')
-            -- vim.keymap.set('n', ']]', '<cmd>AerialNext<CR>')
 
             require('telescope').load_extension('aerial')
         end,
