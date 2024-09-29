@@ -56,16 +56,12 @@ vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l")
 -- vim.keymap.set({ "n", "v"}, "5<leader>", "<cmd>5wincmd w<CR>")
 -- vim.keymap.set({ "n", "v"}, "6<leader>", "<cmd>6wincmd w<CR>")
 
--- vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
--- vim.keymap.set("n", "<leader>ss", "<cmd>split<CR><C-W>w")
--- vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR><C-W>w")
-
-vim.keymap.set("n", "<S-F5>", "<cmd>vertical resize -4<CR>")
-vim.keymap.set("n", "<S-F6>", "<cmd>resize +4<CR>")
-vim.keymap.set("n", "<S-F7>", "<cmd>resize -4<CR>")
-vim.keymap.set("n", "<S-F8>", "<cmd>vertical resize +4<CR>")
+vim.keymap.set("n", "<up>"  , "<cmd>resize +4<CR>")
+vim.keymap.set("n", "<down>", "<cmd>resize -4<CR>")
+vim.keymap.set("n", "<left>" , "<cmd>vertical resize -4<CR>")
+vim.keymap.set("n", "<right>", "<cmd>vertical resize +4<CR>")
 -- this goofy map is bcuz resize doesn't fully hide cmdline
-vim.keymap.set("n", "<leader><F6>", "<cmd>set cmdheight=0<CR>")
+vim.keymap.set("n", "<leader><down>", "<cmd>set cmdheight=0<CR>")
 
 -- move a selection up and down (autoindents)
 -- vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")

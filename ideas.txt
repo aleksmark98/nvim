@@ -1,3 +1,13 @@
 Try navbuddy instead of aerial: https://github.com/SmiteshP/nvim-navbuddy
 
 Try to replace statusline with winbars containing only filepath
+
+re-read https://seniormars.com/posts/neovim-workflow/
+
+improve/learn quickfix list
+- https://github.com/yssl/QFEnter
+- https://github.com/kevinhwang91/nvim-bqf
+
+figure out undotree
+- https://github.com/jiaoshijie/undotree
+- https://github.com/mbbill/undotree

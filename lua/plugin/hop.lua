@@ -3,6 +3,10 @@ return{
         'phaazon/hop.nvim',
         -- 'smoka7/hop.nvim',
         -- version = "*",
+        keys ={
+            {"s"},
+            {"S"},
+        },
         event = {"BufReadPre", "BufNewFile"},
         config = function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
