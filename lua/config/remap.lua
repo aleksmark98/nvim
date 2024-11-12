@@ -39,22 +39,16 @@ vim.keymap.set("n", "<leader>rp", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 --telescope can do this
 --vim.keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
 
--- this clashes with LSP and I can't be bothered to resolve it
--- vim.keymap.set({ "n", "v"}, "H", "<C-w>h")
--- vim.keymap.set({ "n", "v"}, "J", "<C-w>j")
--- vim.keymap.set({ "n", "v"}, "K", "<C-w>k")
--- vim.keymap.set({ "n", "v"}, "L", "<C-w>l")
 -- easier window navigation
 vim.keymap.set({"n", "v"}, "<C-h>", "<C-w>h")
 vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>j")
 vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>k")
 vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l")
--- vim.keymap.set({ "n", "v"}, "1<leader>", "<cmd>1wincmd w<CR>")
--- vim.keymap.set({ "n", "v"}, "2<leader>", "<cmd>2wincmd w<CR>")
--- vim.keymap.set({ "n", "v"}, "3<leader>", "<cmd>3wincmd w<CR>")
--- vim.keymap.set({ "n", "v"}, "4<leader>", "<cmd>4wincmd w<CR>")
--- vim.keymap.set({ "n", "v"}, "5<leader>", "<cmd>5wincmd w<CR>")
--- vim.keymap.set({ "n", "v"}, "6<leader>", "<cmd>6wincmd w<CR>")
+-- vim.keymap.set({"n", "v"}, "gh", "<C-w>h")
+-- vim.keymap.set({"n", "v"}, "gj", "<C-w>j")
+-- vim.keymap.set({"n", "v"}, "gk", "<C-w>k")
+-- gl clashes with native vim.diagnostic.open_float() binding
+-- vim.keymap.set({"n", "v"}, "gl", "<C-w>l")
 
 vim.keymap.set("n", "<up>"  , "<cmd>resize +4<CR>")
 vim.keymap.set("n", "<down>", "<cmd>resize -4<CR>")
