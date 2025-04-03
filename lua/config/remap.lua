@@ -60,3 +60,6 @@ vim.keymap.set("n", "<leader><down>", "<cmd>set cmdheight=0<CR>")
 -- move a selection up and down (autoindents)
 -- vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen ")
+vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>")

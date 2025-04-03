@@ -1,4 +1,5 @@
 require('config.remap')
 require('config.set')
-require('config.pwd_change')
 require('config.lazy')
+require('config.lsp_zero')
+require('config.pwd_change')

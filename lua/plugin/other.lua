@@ -3,7 +3,6 @@ return {
         'numToStr/Comment.nvim',
         opts = {
         },
-        -- event = 'BufEnter',
         event = { "BufReadPre", "BufNewFile" },
     },
     {
@@ -13,8 +12,7 @@ return {
     },
     {
         'tpope/vim-fugitive',
-        -- event = 'BufEnter',
-        event = { "BufReadPre", "BufNewFile" },
+        event = 'BufEnter',
     },
     -- {'mbbill/undotree'}, -- TODO: learn undotree
 }

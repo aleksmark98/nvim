@@ -1,4 +1,6 @@
 --vim.opt.guicursor = ""
+vim.g.python_host_prog = '/opt/homebrew/bin/python3.12'
+vim.g.python3_host_prog = '/opt/homebrew/bin/python3.12'
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -9,9 +11,9 @@ vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 vim.o.cmdheight = 0
 vim.opt.laststatus = 3
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 3
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -31,6 +33,8 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+vim.opt.scroll=15
+
 vim.opt.signcolumn = "number"
 vim.opt.isfname:append("@-@")
 

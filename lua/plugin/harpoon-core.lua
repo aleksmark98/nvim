@@ -1,4 +1,5 @@
 return {
+    -- TODO: set that harpoon window opens in place rather than shifting focus
     'MeanderingProgrammer/harpoon-core.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim' },
     event = 'BufEnter',
