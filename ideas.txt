@@ -11,3 +11,9 @@ improve/learn quickfix list
 figure out undotree
 - https://github.com/jiaoshijie/undotree
 - https://github.com/mbbill/undotree
+
+improve telescope findfiles root settings
+
+experiment with keymaps
+   - H,L for ^,$
+   - gh, gj, gk, gl for switching nvim windows
