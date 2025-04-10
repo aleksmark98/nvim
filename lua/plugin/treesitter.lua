@@ -118,17 +118,13 @@ return {
         },
     },
     {
-        "kylechui/nvim-surround",
-        -- event = 'BufEnter',
-        event = {"BufReadPre", "BufNewFile"},
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-                keymaps = {
-                    normal = "<leader>s",
-                    visual = "<leader>s",
-                }
-            })
-        end
+      "kylechui/nvim-surround",
+      event = {"BufReadPre", "BufNewFile"},
+      opts = {
+         keymaps = {
+            normal = "<leader>s",
+            visual = "<leader>s",
+         }
+      }
     },
 }

@@ -1,7 +1,7 @@
 return {
     {
         "monaqa/dial.nvim",
-        event = "VeryLazy",
+        keys = { "<C-a>", { "<C-x>", mode = "n" } },
         config = function()
             vim.keymap.set("n", "<C-a>", function()
                 require("dial.map").manipulate("increment", "normal")
