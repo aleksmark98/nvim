@@ -61,5 +61,5 @@ vim.keymap.set("n", "<leader><down>", "<cmd>set cmdheight=0<CR>")
 -- vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>")
-vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>")
+vim.keymap.set({"n", "v"}, "H", "^")
+vim.keymap.set({"n", "v"}, "L", "$")
