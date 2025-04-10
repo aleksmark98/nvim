@@ -54,37 +54,25 @@ return {
         'nvim-lualine/lualine.nvim',
         as = 'lualine',
         lazy = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true, lazy = true },
         config = function()
-
             local custom_moonfly = require'lualine.themes.moonfly'
             -- Change the background of lualine_c section for normal mode
+            custom_moonfly.normal.b.bg = nil
             custom_moonfly.normal.c.bg = nil
-            -- custom_moonfly.bg = nil
 
             require('lualine').setup({
                 options = {
                     theme = custom_moonfly,
                     icons_enabled = false,
+                    section_separators = { left = '', right = '' },
+                    component_separators = { left = '', right = '' }
                 },
                 sections = {
                     lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = { "os.date('%X')"},
+                    lualine_y = {"searchcount", "selectioncount"},
+                    lualine_z = {"location", "progress"},
                 },
-                -- winbar = {
-                --     lualine_a = { "buffers"},
-                --     lualine_x = {},
-                --     lualine_y = {},
-                --     lualine_z = { "os.date('%X')"},
-                -- },
-                -- inactive_winbar = {
-                --     lualine_a = { "buffers"},
-                --     lualine_x = {},
-                --     lualine_y = {},
-                --     lualine_z = { "os.date('%X')"},
-                -- },
-                -- sections = {},
             })
         end,
     }
