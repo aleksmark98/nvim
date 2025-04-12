@@ -13,5 +13,10 @@ return {
    --     'tpope/vim-fugitive',
    --     event = 'BufEnter',
    -- },
-   -- {'mbbill/undotree'}, -- TODO: learn undotree
+   -- {
+   --    'mbbill/undotree',
+   --    keys = {
+   --       {'<leader>u', '<cmd>UndotreeToggle<cr>' }
+   --    }
+   -- }, -- TODO: learn undotree
 }

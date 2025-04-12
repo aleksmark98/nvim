@@ -33,7 +33,7 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.scroll=15
+vim.opt.scroll = 15
 
 vim.opt.signcolumn = "number"
 vim.opt.isfname:append("@-@")

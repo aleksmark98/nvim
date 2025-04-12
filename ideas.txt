@@ -1,7 +1,5 @@
 Try navbuddy instead of aerial: https://github.com/SmiteshP/nvim-navbuddy
 
-Try to replace statusline with winbars containing only filepath
-
 re-read https://seniormars.com/posts/neovim-workflow/
 
 improve/learn quickfix list
@@ -16,4 +14,11 @@ improve telescope findfiles root settings
 
 experiment with keymaps
    - H,L for ^,$
-   - gh, gj, gk, gl for switching nvim windows
+
+earn an aligning plugin
+   https://github.com/Vonr/align.nvim
+   https://github.com/echasnovski/mini.align
+
+determine if a FindAndReplace plugin is necesary
+   https://github.com/MagicDuck/grug-far.nvim?tab=readme-ov-file
+
