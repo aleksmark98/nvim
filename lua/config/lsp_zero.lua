@@ -28,84 +28,10 @@
 -- })
 
 vim.diagnostic.config({ virtual_text = {current_line = true } })
--- vim.o.winborder = 'single' -- this breaks floating cmdline
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
   opts.border = 'single'
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local default_setup = function(server)
-   require('lspconfig')[server].setup({
-      capabilities = lsp_capabilities,
-   })
-end
-
-require('mason').setup({})
-require('mason-lspconfig').setup({
-   ensure_installed = {
-      'clangd',
-      'cmake',
-      'pyright',
-      -- 'matlab_ls',
-      --'r_language_server', -- throws an error
-      'opencl_ls',
-      'lua_ls',
-      -- 'texlab',
-      -- 'dockerls',
-   },
-   handlers = {
-      default_setup,
-      lua_ls = function()
-         require('lspconfig').lua_ls.setup({
-            capabilities = lsp_capabilities,
-            settings = {
-               Lua = {
-                  runtime = {
-                     version = 'LuaJIT'
-                  },
-                  diagnostics = {
-                     globals = {'vim'},
-                  },
-                  workspace = {
-                     library = {
-                        vim.env.VIMRUNTIME,
-                     }
-                  }
-               }
-            }
-         })
-         require('lspconfig').pyright.setup({
-            capabilities = lsp_capabilities,
-            settings = {
-               python = {
-                  -- ensure correct imports
-                  pythonPath = vim.fn.exepath("python3.12"),
-               },
-            }
-         })
-      end,
-   },
-})
-
-local cmp = require('cmp')
-cmp.setup({
-   sources = {
-      {name = 'nvim_lsp'},
-   },
-   mapping = cmp.mapping.preset.insert({
-      ['<CR>'] = cmp.mapping.confirm({select = false}),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-   }),
-   -- snippet = {
-   --    expand = function(args)
-   --       require('luasnip').lsp_expand(args.body)
-   --    end,
-   -- },
-})
 
