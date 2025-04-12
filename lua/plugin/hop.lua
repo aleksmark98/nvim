@@ -7,7 +7,6 @@ return{
             {"s"},
             {"S"},
         },
-        event = {"BufReadPre", "BufNewFile"},
         config = function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
             local hop = require('hop')

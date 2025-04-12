@@ -14,6 +14,7 @@ return {
             {'<leader>gbc', '<cmd>Telescope git_bcommits<CR>'},
             {'<leader>gs',  '<cmd>Telescope git_status<CR>'},
         },
+      cmd = {'Telescope'},
         tag = '0.1.8',
         dependencies = {
             {'nvim-lua/plenary.nvim'},

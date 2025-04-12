@@ -114,7 +114,12 @@ return {
    },
    {
       "kylechui/nvim-surround",
-      event = {"BufReadPre", "BufNewFile"},
+      keys = {
+         {"<leader>s"},
+         {"<leader>s"},
+         {"cs"},
+         {"ds"},
+      },
       opts = {
          keymaps = {
             normal = "<leader>s",
