@@ -3,7 +3,7 @@ vim.g.python_host_prog = '/opt/homebrew/bin/python3.12'
 vim.g.python3_host_prog = '/opt/homebrew/bin/python3.12'
 
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.numberwidth = 1
 vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 
