@@ -1,5 +1,26 @@
 return {
    {
+      'ray-x/lsp_signature.nvim',
+      event = {'InsertEnter'},
+      -- keys = {
+      --    {'<C-k>' ''}
+      -- },
+      opts = {
+         bind = true,
+         handler_opts = {
+            border = 'rounded'
+         },
+      },
+      config = function()
+         vim.keymap.set({ 'n' }, '<C-k>', function()       require('lsp_signature').toggle_float_win()
+         end, { silent = true, noremap = true, desc = 'toggle signature' })
+
+         vim.keymap.set({ 'n' }, '<Leader>k', function()
+            vim.lsp.buf.signature_help()
+         end, { silent = true, noremap = true, desc = 'toggle signature' })
+      end
+   },
+   {
       'williamboman/mason.nvim',
       cmd = {"Mason"},
       opts = {},
@@ -61,88 +82,5 @@ return {
             },
          })
       end,
-   }, -- Optional
-   -- Autocompletion
-   {
-      'hrsh7th/nvim-cmp',
-      dependencies = {
-         'hrsh7th/cmp-cmdline',
-         'hrsh7th/cmp-buffer',
-      },
-      event = "VeryLazy",
-      config = function()
-         local cmp = require('cmp')
-         local luasnip = require('luasnip')
-         cmp.setup({
-            sources = {
-               {name = 'nvim_lsp'},
-            },
-            mapping = cmp.mapping.preset.insert({
-               ['<CR>'] = cmp.mapping.confirm({select = false}),
-               ['<C-e>'] = cmp.mapping.abort(),
-               ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-               ['<C-f>'] = cmp.mapping.scroll_docs(4),
-               ["<Tab>"] = cmp.mapping(function(fallback)
-                  if luasnip.locally_jumpable(1) then
-                     luasnip.jump(1)
-                  else
-                     fallback()
-                  end
-               end, { "i", "s" }),
-               ["<S-Tab>"] = cmp.mapping(function(fallback)
-                  if luasnip.locally_jumpable(-1) then
-                     luasnip.jump(-1)
-                  else
-                     fallback()
-                  end
-               end, { "i", "s" }),
-            }),
-            snippet = {
-               expand = function(args)
-                  require('luasnip').lsp_expand(args.body)
-               end,
-            },
-         })
-         cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline({
-               ['<CR>'] = cmp.mapping.confirm({select = false}),
-               ['<C-e>'] = cmp.mapping.abort(),
-               ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-               ['<C-f>'] = cmp.mapping.scroll_docs(4),
-               ['<C-n>'] = cmp.mapping.select_next_item(),
-               ['<C-p>'] = cmp.mapping.select_prev_item(),
-            }),
-            sources = cmp.config.sources(
-               {
-                  { name = 'path' }
-               },
-               {
-                  {
-                     name = 'cmdline',
-                     option = {
-                        ignore_cmds = { 'Man', '!' }
-                     }
-                  }
-               }
-            )
-         })
-         cmp.setup.cmdline('/', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-               { name = 'buffer' }
-            }
-         })
-      end,
-   },
-   {
-      "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
-      build = "make install_jsregexp"
-   },
-   {
-      "ray-x/lsp_signature.nvim",
-      event = {"BufReadPre", "BufNewFile"},
    },
 }
