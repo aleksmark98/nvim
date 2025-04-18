@@ -1,24 +1,35 @@
-Try navbuddy instead of aerial: https://github.com/SmiteshP/nvim-navbuddy
+(WIP) experiment with keymaps
+   - H,L for ^,$
 
-re-read https://seniormars.com/posts/neovim-workflow/
+blink.cmp
+   - promises of completion being faster and snappier
+   - the setup looks less convoluted
+   - see how kickstart sets it up https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
-improve/learn quickfix list
-- https://github.com/yssl/QFEnter
-- https://github.com/kevinhwang91/nvim-bqf
-
-figure out undotree
-- https://github.com/jiaoshijie/undotree
-- https://github.com/mbbill/undotree
+plugin for moving windows:
+   1) extend nvim-window to support swaps - should be doable
+   2) try winshift https://github.com/sindrets/winshift.nvim
 
 improve telescope findfiles root settings
 
-experiment with keymaps
-   - H,L for ^,$
+Try navbuddy instead of aerial
+   - interesting way to browse LSP symbols in a nested way
+   - https://github.com/SmiteshP/nvim-navbuddy
+
+improve/learn quickfix list
+   - https://github.com/yssl/QFEnter
+   - https://github.com/kevinhwang91/nvim-bqf
+
+figure out undotree
+   - https://github.com/jiaoshijie/undotree
+   - https://github.com/mbbill/undotree
 
 earn an aligning plugin
-   https://github.com/Vonr/align.nvim
-   https://github.com/echasnovski/mini.align
+   - https://github.com/Vonr/align.nvim
+   - https://github.com/echasnovski/mini.align
 
 determine if a FindAndReplace plugin is necesary
-   https://github.com/MagicDuck/grug-far.nvim?tab=readme-ov-file
+   - https://github.com/MagicDuck/grug-far.nvim?tab=readme-ov-file
+
+re-read https://seniormars.com/posts/neovim-workflow/
 
