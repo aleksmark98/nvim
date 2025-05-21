@@ -19,6 +19,7 @@ return {
       dependencies = {
          {'nvim-lua/plenary.nvim'},
          {'nvim-telescope/telescope-fzf-native.nvim', build='make'},
+         {'desdic/telescope-rooter.nvim'},
       },
       config = function()
          local telescope = require("telescope")
@@ -46,9 +47,14 @@ return {
             },
             extensions = {
                fzf = {},
+               rooter = {
+                  enable = true,
+                  patterns = {'.git'}
+               }
             },
          }
          telescope.load_extension('fzf')
+         telescope.load_extension('rooter')
       end
    }
 }
