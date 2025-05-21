@@ -62,3 +62,5 @@ vim.keymap.set("n", "<leader><down>", "<cmd>set cmdheight=0<CR>")
 
 vim.keymap.set({"n", "v"}, "H", "^")
 vim.keymap.set({"n", "v"}, "L", "$")
+
+vim.keymap.set("n", "<leader>:"  , "<cmd>call setline('.', getline('.') . ';')<CR>")
