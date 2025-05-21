@@ -4,22 +4,35 @@ return {
       dependencies = {
          'hrsh7th/cmp-cmdline',
          'hrsh7th/cmp-buffer',
+         "hrsh7th/cmp-path",
+         "hrsh7th/cmp-calc",
          {
             "L3MON4D3/LuaSnip",
             -- follow latest release.
-            version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+            -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+            version = "v2.*",
             -- install jsregexp (optional!).
-            build = "make install_jsregexp"
+            build = "make install_jsregexp",
+            config = function()
+               -- custom snippets
+               -- require('config.snippets')
+            end,
          },
+         -- for autocompletion
+         "saadparwaiz1/cmp_luasnip",
       },
-      event = "VeryLazy",
+      event = "InsertEnter",
       config = function()
          local cmp = require('cmp')
          local luasnip = require('luasnip')
          cmp.setup({
-            sources = {
-               {name = 'nvim_lsp'},
-            },
+            sources = cmp.config.sources({
+               { name = "nvim_lsp" },
+               { name = "luasnip" },
+               { name = "buffer" },
+               { name = "path" },
+               { name = "calc" },
+            }),
             mapping = cmp.mapping.preset.insert({
                ['<CR>'] = cmp.mapping.confirm({select = false}),
                ['<C-e>'] = cmp.mapping.abort(),

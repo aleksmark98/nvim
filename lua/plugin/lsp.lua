@@ -70,6 +70,7 @@ return {
                      }
                   })
                   require('lspconfig').pyright.setup({
+                     autostart = false,
                      capabilities = lsp_capabilities,
                      settings = {
                         python = {
