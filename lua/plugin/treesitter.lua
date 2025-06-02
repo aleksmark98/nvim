@@ -39,6 +39,7 @@ return {
          vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
       end,
    },
+   -- {'nvim-treesitter/playground'} -- show treesitter info, might use later
    {
       'nvim-treesitter/nvim-treesitter-context',
       event = "VeryLazy",
@@ -93,15 +94,13 @@ return {
       },
    },
    {
+      -- keeping this for TreeSitter buffer navigation
       'stevearc/aerial.nvim',
-      keys = {
-         { '<F9>', '<cmd>AerialToggle! left<CR>' },
-         -- { '[[', '<cmd>AerialPrev<CR>' },
-         -- { ']]', '<cmd>AerialNext<CR>' },
-      },
+      cmd = { 'AerialNavToggle' },
       config = function()
          require('aerial').setup({
-            backends = { "lsp", "treesitter", "markdown", "man" },
+            -- backends = { "lsp", "treesitter", "markdown", "man" },
+            backends = { "treesitter", "markdown", "man" },
          })
 
          require('telescope').load_extension('aerial')
