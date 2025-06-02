@@ -1,5 +1,5 @@
 return {
    'asiryk/auto-hlsearch.nvim',
-   event = {"BufReadPre", "BufNewFile"},
+   event = {"VeryLazy"},
    opts = {},
 }

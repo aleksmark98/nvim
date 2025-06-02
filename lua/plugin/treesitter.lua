@@ -39,10 +39,9 @@ return {
          vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
       end,
    },
-   -- {'nvim-treesitter/playground'} -- show treesitter info, might use later
    {
       'nvim-treesitter/nvim-treesitter-context',
-      event = {"BufReadPre", "BufNewFile"},
+      event = "VeryLazy",
    }, -- sticky function definitions
    {
       'mizlan/iswap.nvim',

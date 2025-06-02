@@ -17,9 +17,11 @@ return {
                -- custom snippets
                -- require('config.snippets')
             end,
+            dependencies = {
+               -- for autocompletion
+               "saadparwaiz1/cmp_luasnip",
+            }
          },
-         -- for autocompletion
-         "saadparwaiz1/cmp_luasnip",
       },
       event = "InsertEnter",
       config = function()
