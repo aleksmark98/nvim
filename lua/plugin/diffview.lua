@@ -1,8 +1,13 @@
-return { {
+vim.cmd("cnoreabbrev dvo DiffviewOpen")
+vim.cmd("cnoreabbrev dvc DiffviewClose")
+vim.cmd("cnoreabbrev dvh DiffviewFileHistory")
+
+return {
    'sindrets/diffview.nvim',
    event = 'VeryLazy',
-   keys = {
-      { '<leader>do', '<cmd>DiffviewOpen<CR>' },
-      { '<leader>dc', '<cmd>DiffviewClose<CR>' },
+   cmd = {
+      'DiffviewOpen',
+      'DiffviewClose',
+      'DiffviewFileHistory',
    },
-} }
+}
