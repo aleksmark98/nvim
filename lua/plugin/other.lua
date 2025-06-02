@@ -1,7 +1,7 @@
 return {
    {
       'numToStr/Comment.nvim',
-      event = { "BufReadPre", "BufNewFile" },
+      event = "VeryLazy",
       opts = {},
    },
    {
@@ -15,14 +15,19 @@ return {
          autopairs.add_rules({ Rule("|", "|","zig") })
       end,
    },
-   -- {
-   --     'tpope/vim-fugitive',
-   --     event = 'BufEnter',
-   -- },
-   -- {
-   --    'mbbill/undotree',
-   --    keys = {
-   --       {'<leader>u', '<cmd>UndotreeToggle<cr>' }
-   --    }
-   -- }, -- TODO: learn undotree
+   {
+      "kylechui/nvim-surround",
+      keys = {
+         {"<leader>s"},
+         {"s", mode = "v"},
+         {"cs"},
+         {"ds"},
+      },
+      opts = {
+         keymaps = {
+            normal = "<leader>s",
+            visual = "s",
+         }
+      }
+   },
 }

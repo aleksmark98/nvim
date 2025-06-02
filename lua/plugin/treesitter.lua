@@ -112,19 +112,4 @@ return {
          "nvim-tree/nvim-web-devicons"
       },
    },
-   {
-      "kylechui/nvim-surround",
-      keys = {
-         {"<leader>s"},
-         {"<leader>s"},
-         {"cs"},
-         {"ds"},
-      },
-      opts = {
-         keymaps = {
-            normal = "<leader>s",
-            visual = "<leader>s",
-         }
-      }
-   },
 }
