@@ -2,6 +2,7 @@ blink.cmp
    - promises of completion being faster and snappier
    - the setup looks less convoluted
    - see how kickstart sets it up https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+   - make sure lsp completion sources are setup automagically
 
 flash.nvim
    - better remote motions than current hacky hop setup
@@ -36,3 +37,13 @@ tree-sitter-textobjects
    - plug in nvim-surround
 
 experiment with a sessionizer
+
+Git integration
+   - diffview is great for diffs, basic staging and file history, BUT
+      - lacks git blame for a line
+      - lacks hunk staging
+   - look into git integration of that
+
+conform.nvim for better formatting options
+   - https://github.com/stevearc/conform.nvim
+

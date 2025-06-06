@@ -20,8 +20,6 @@ vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
 -- hitting Q more often  than using macros
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.cmd("cnoreabbrev format lua vim.lsp.buf.format")
-
 -- TODO quickfix bindings
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
