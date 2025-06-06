@@ -18,15 +18,14 @@ return {
    {
       "kylechui/nvim-surround",
       keys = {
-         {"<leader>s"},
-         {"s", mode = "v"},
+         {"<leader>s", mode = {"v", "n"}},
          {"cs"},
          {"ds"},
       },
       opts = {
          keymaps = {
             normal = "<leader>s",
-            visual = "s",
+            visual = "<leader>s",
          }
       }
    },

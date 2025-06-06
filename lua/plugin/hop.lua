@@ -7,6 +7,7 @@ return{
             {"s"},
             {"S"},
         },
+        event = 'VeryLazy',
         config = function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
             local hop = require('hop')
