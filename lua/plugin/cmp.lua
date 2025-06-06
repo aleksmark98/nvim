@@ -2,10 +2,11 @@ return {
    {
       'hrsh7th/nvim-cmp',
       dependencies = {
+         'hrsh7th/cmp-nvim-lsp',
          'hrsh7th/cmp-cmdline',
          'hrsh7th/cmp-buffer',
-         "hrsh7th/cmp-path",
-         "hrsh7th/cmp-calc",
+         'hrsh7th/cmp-path',
+         'hrsh7th/cmp-calc',
          {
             "L3MON4D3/LuaSnip",
             -- follow latest release.
@@ -83,6 +84,11 @@ return {
                { name = 'buffer' }
             }
          })
+         -- TODO automate this somehow with mason
+         local capabilities = require('cmp_nvim_lsp').default_capabilities()
+         require('lspconfig')['pyright'].setup { capabilities = capabilities }
+         require('lspconfig')['lua_ls'].setup { capabilities = capabilities }
+         require('lspconfig')['zls'].setup { capabilities = capabilities }
       end,
    },
 }
