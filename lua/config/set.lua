@@ -42,3 +42,6 @@ vim.opt.updatetime = 50
 
 -- visual help for line length limit
 --vim.opt.colorcolumn = "80"
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true

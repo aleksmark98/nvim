@@ -35,3 +35,4 @@ tree-sitter-textobjects
    - set up swapping - remote iswap
    - plug in nvim-surround
 
+experiment with a sessionizer
