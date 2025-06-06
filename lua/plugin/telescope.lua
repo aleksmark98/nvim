@@ -4,7 +4,8 @@ return {
       keys = {
          {'<leader>ff',  '<cmd>Telescope find_files<CR>'}, -- uses FZF via an extention
          {'<leader>rg',  '<cmd>Telescope live_grep<CR>'}, -- native - uses ripgrep without args;
-         {'<leader>nvc',  "<cmd>lua require'telescope.builtin'.live_grep({ cwd='~/.config/nvim/' })<CR>"}, -- native - uses ripgrep without args
+         {'<leader>rh',  "<cmd>lua require'telescope.builtin'.live_grep({ layout_strategy='horizontal' })<CR>"},
+         {'<leader>nvc',  "<cmd>lua require'telescope.builtin'.live_grep({ cwd='~/.config/nvim/' })<CR>"},
          {'<leader>fb',  '<cmd>Telescope buffers<CR>'}, -- can be done natively with ":ls<cr>:b<space>"
          {'<leader>fh',  '<cmd>Telescope help_tags<CR>'},
          {'<leader>gd',  '<cmd>Telescope lsp_definitions<CR>'},
