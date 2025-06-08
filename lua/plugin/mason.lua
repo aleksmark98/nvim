@@ -11,7 +11,9 @@ return {
                "clangd",
                "cmake",
                "lua_ls",
+               "stylua",
                "pyright",
+               "black",
                "zls",
             },
          }

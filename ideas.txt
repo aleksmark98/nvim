@@ -44,6 +44,3 @@ Git integration
       - lacks hunk staging
    - look into git integration of that
 
-conform.nvim for better formatting options
-   - https://github.com/stevearc/conform.nvim
-
