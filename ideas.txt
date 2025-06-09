@@ -50,3 +50,5 @@ Git integration
       - lacks hunk staging
    - look into git integration of that
 
+
+COMMIT 1
