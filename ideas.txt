@@ -45,10 +45,6 @@ tree-sitter-textobjects
 experiment with a sessionizer
 
 Git integration
-   - diffview is great for diffs, basic staging and file history, BUT
-      - lacks git blame for a line
-      - lacks hunk staging
-   - look into git integration of that
 
 
-COMMIT 1
+COMMIT 2
