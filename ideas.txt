@@ -14,5 +14,4 @@ figure out undotree
 
 
 
-COMMIT 1
-COMMIT 1
+COMMIT 2
