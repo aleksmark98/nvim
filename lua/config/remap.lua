@@ -39,6 +39,8 @@ vim.keymap.set({"n", "v"}, "L", "$")
 
 vim.keymap.set("n", "<leader>:"  , "<cmd>call setline('.', getline('.') . ';')<CR>")
 
+-- cmd map: "tdiag" to [t]oggle [diag]nostics
+vim.cmd("cnoreabbrev tdiag lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())")
 
 -- LSP MAPPINGS
 -- note: diagnostics are not exclusive to lsp servers

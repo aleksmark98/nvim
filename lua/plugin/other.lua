@@ -28,4 +28,9 @@ return {
          }
       }
    },
+   {
+      -- mainly for G blame
+      "tpope/vim-fugitive",
+      event = "VeryLazy",
+   }
 }
