@@ -19,7 +19,7 @@ return {
       -- Define your formatters
       formatters_by_ft = {
          lua = { "stylua" },
-         python = { "black" },
+         python = { "yapf" },
          zig = { "zigfmt" }
       },
       -- Set default options

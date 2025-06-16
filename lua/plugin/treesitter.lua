@@ -1,7 +1,7 @@
 return {
    {
       'nvim-treesitter/nvim-treesitter',
-      event = {"BufReadPre", "BufNewFile"},
+      lazy = false,
       config = function()
          require'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -39,14 +39,16 @@ return {
          vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
       end,
    },
-   -- {'nvim-treesitter/playground'} -- show treesitter info, might use later
    {
       'nvim-treesitter/nvim-treesitter-context',
       event = "VeryLazy",
+      dependencies = {
+         'nvim-treesitter/nvim-treesitter'
+      },
+      opts = {},
    }, -- sticky function definitions
    {
       'mizlan/iswap.nvim',
-      -- event = {"BufReadPre", "BufNewFile"},
       keys = {
          { "<leader>is", "<cmd>ISwapWith<CR>" },
          { "<leader>in", "<cmd>ISwapNodeWith<CR>" },

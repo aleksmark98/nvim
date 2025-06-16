@@ -53,7 +53,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         as = 'lualine',
-        lazy = false,
+        event = "VeryLazy",
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true, lazy = true },
         config = function()
             local custom_moonfly = require'lualine.themes.moonfly'

@@ -1,7 +1,7 @@
 return {
    "mason-org/mason-lspconfig.nvim",
    opts = {},
-   event = {"BufReadPre", "BufNewFile"},
+   event = {"VeryLazy"}, -- not sure if this breaks anything
    dependencies = {
       {
          "mason-org/mason.nvim",
@@ -13,7 +13,7 @@ return {
                "lua_ls",
                "stylua",
                "pyright",
-               "black",
+               "yapf",
                "zls",
             },
          }
