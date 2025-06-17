@@ -20,9 +20,6 @@ improve/learn/replace quickfix+location list
    - https://github.com/folke/trouble.nvim
       - sidebar, bottombar, looks a lot like VScode
    - https://github.com/stevearc/quicker.nvim
-   - https://github.com/stefandtw/quickfix-reflector.vim
-      - similar to trouble - editable QF, effectivelly a serach and replace
-      - can delete entries from QF
 
 figure out undotree
    - https://github.com/jiaoshijie/undotree
