@@ -5,9 +5,6 @@ vim.keymap.set("n", "<leader>ih", function()
     vim.cmd("set hlsearch!")
 end)
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 -- make the default visual paste not overwrite the unnamed register
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
@@ -19,15 +16,6 @@ vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
 
 -- hitting Q more often  than using macros
 vim.keymap.set("n", "Q", "<nop>")
-
--- TODO quickfix bindings
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
---vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
---vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
---vim.keymap.set("n", "<leader>j", "<cmd>lprev<C>zz")
-
---TODO sth with creating an executable, idk might understand and use later
---vim.keygap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<up>"  , "<cmd>resize +4<CR>")
 vim.keymap.set("n", "<down>", "<cmd>resize -4<CR>")
@@ -41,6 +29,8 @@ vim.keymap.set("n", "<leader>:"  , "<cmd>call setline('.', getline('.') . ';')<C
 
 -- cmd map: "tdiag" to [t]oggle [diag]nostics
 vim.cmd("cnoreabbrev tdiag lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())")
+
+vim.cmd("cnoreabbrev viewopt lua print(vim.inspect(vim.opt.")
 
 -- LSP MAPPINGS
 -- note: diagnostics are not exclusive to lsp servers
@@ -61,10 +51,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
       vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
       vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-      -- vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-      -- vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-      -- vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-      -- vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+      vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+      vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+      vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
       -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
       -- vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
       -- vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
