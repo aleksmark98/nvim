@@ -1,10 +1,10 @@
 return {
    "stevearc/conform.nvim",
-   event = { "BufWritePre" },
+   event = { "VeryLazy" },
    cmd = { "ConformInfo" },
    keys = {
       {
-         "<leader>f",
+         "<leader>fm",
          function()
             require("conform").format({ async = true })
          end,
@@ -20,7 +20,10 @@ return {
       formatters_by_ft = {
          lua = { "stylua" },
          python = { "yapf" },
-         zig = { "zigfmt" }
+         zig = { "zigfmt" },
+         rust = { "rustfmt", lsp_format = "fallback" },
+         cpp = { "clang_format" },
+
       },
       -- Set default options
       default_format_opts = {
@@ -30,8 +33,12 @@ return {
       -- format_on_save = { timeout_ms = 500 },
       -- Customize formatters
       formatters = {
+         clang_format = {
+            -- prepend_args = { '--style=file', '--fallback-style=LLVM' },
+            prepend_args = { '--style={BasedOnStyle: llvm, IndentWidth: 3}' },
+         },
          shfmt = {
-            prepend_args = { "-i", "2" },
+            prepend_args = { "-i", "3" },
          },
       },
 		["*"] = { "trim_whitespace" },
