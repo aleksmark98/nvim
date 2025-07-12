@@ -63,6 +63,14 @@ return{
                 set("n", "yar" .. v, hint_word_and_then(function()
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('ya'..v, true, false, true), "n", true)
                 end), { noremap = true })
+
+                set("n", "<leader>yir" .. v, hint_word_and_then(function()
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+yi'..v, true, false, true), "n", true)
+                end), { noremap = true })
+
+                set("n", "<leader>yar" .. v, hint_word_and_then(function()
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+ya'..v, true, false, true), "n", true)
+                end), { noremap = true })
             end
         end,
     }
