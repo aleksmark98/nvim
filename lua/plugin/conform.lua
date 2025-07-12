@@ -23,7 +23,6 @@ return {
          zig = { "zigfmt" },
          rust = { "rustfmt", lsp_format = "fallback" },
          cpp = { "clang_format" },
-
       },
       -- Set default options
       default_format_opts = {
@@ -34,12 +33,19 @@ return {
       -- Customize formatters
       formatters = {
          clang_format = {
-            -- prepend_args = { '--style=file', '--fallback-style=LLVM' },
-            prepend_args = { '--style={BasedOnStyle: llvm, IndentWidth: 3}' },
+            prepend_args = {
+               '--style=file',
+               '--fallback-style={BasedOnStyle: llvm, IndentWidth: 3}'
+            },
          },
          shfmt = {
             prepend_args = { "-i", "3" },
          },
+         stylua = {
+            prepend_args = {
+               '--indent-type Spaces'
+            }
+         }
       },
 		["*"] = { "trim_whitespace" },
    },
