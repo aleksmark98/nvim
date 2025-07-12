@@ -48,7 +48,10 @@ vim.opt.splitright = true
 
 
 -- LSP SETTINGS
-vim.diagnostic.config({ virtual_text = {current_line = true } })
+vim.diagnostic.config({
+   virtual_text = {current_line = true },
+   signs = {},
+})
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
