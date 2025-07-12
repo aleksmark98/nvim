@@ -3,30 +3,30 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.keymap.set("n", "<leader>ih", function()
-    vim.cmd("set hlsearch!")
+   vim.cmd("set hlsearch!")
 end)
 
 -- make the default visual paste not overwrite the unnamed register
 vim.keymap.set("v", "p", "P")
 vim.keymap.set("v", "P", "p")
 -- system clipboard pasting
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
-vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 
 -- hitting Q more often  than using macros
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<up>"  , "<cmd>resize +4<CR>")
+vim.keymap.set("n", "<up>", "<cmd>resize +4<CR>")
 vim.keymap.set("n", "<down>", "<cmd>resize -4<CR>")
-vim.keymap.set("n", "<left>" , "<cmd>vertical resize -4<CR>")
+vim.keymap.set("n", "<left>", "<cmd>vertical resize -4<CR>")
 vim.keymap.set("n", "<right>", "<cmd>vertical resize +4<CR>")
 
-vim.keymap.set({"n", "v"}, "H", "^")
-vim.keymap.set({"n", "v"}, "L", "$")
+vim.keymap.set({ "n", "v" }, "H", "^")
+vim.keymap.set({ "n", "v" }, "L", "$")
 
-vim.keymap.set("n", "<leader>:"  , "<cmd>call setline('.', getline('.') . ';')<CR>")
+vim.keymap.set("n", "<leader>:", "<cmd>call setline('.', getline('.') . ';')<CR>")
 
 -- cmd map: "tdiag" to [t]oggle [diag]nostics
 vim.cmd("cnoreabbrev tdiag lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())")
@@ -37,8 +37,8 @@ vim.cmd("cnoreabbrev viewopt lua print(vim.inspect(vim.opt.")
 -- note: diagnostics are not exclusive to lsp servers
 -- so these can be global keybindings
 -- vim.keymap.set('n', '<C-w>d', '<cmd>lua vim.diagnostic.open_float({border="single"})<cr>')
-vim.api.nvim_create_autocmd('LspAttach', {
-   desc = 'LSP actions',
+vim.api.nvim_create_autocmd("LspAttach", {
+   desc = "LSP actions",
    callback = function(event)
       -- neovim 0.11 completion
       -- local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       --    vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true})
       -- end
 
-      local opts = {buffer = event.buf}
+      local opts = { buffer = event.buf }
       -- -- Below mappings are the suggested LSP mappings before official defaults
       -- -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       -- these will be buffer-local keybindings
@@ -64,28 +64,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- -- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
       -- Below are mappings complementing the builtin defaults
-      vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-      vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-      vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+      vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+      vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+      vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
       -- and these are the builtin defaults
       -- vim.keymap.set('n', 'gra', '<cmd>lua vim.lsp.buf.code_action()()<cr>', opts)
       -- vim.keymap.set('n', 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
       -- this one should be builtin default but isnt?
-      vim.keymap.set('n', 'grt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+      vim.keymap.set("n", "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
       -- vim.keymap.set('n', 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       -- vim.keymap.set('n', 'gO', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', opts)
-   end
+   end,
 })
 
-vim.api.nvim_create_autocmd('filetype', {
-  pattern = 'netrw',
-  desc = 'Better mappings for netrw',
-  callback = function()
-    local bind = function(lhs, rhs)
-      vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
-    end
+vim.api.nvim_create_autocmd("filetype", {
+   pattern = "netrw",
+   desc = "Better mappings for netrw",
+   callback = function()
+      local bind = function(lhs, rhs)
+         vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
+      end
 
-    bind('<leader>e', '<ESC>:bp<Cr>')
-
-  end
+      bind("<leader>e", "<ESC>:bp<Cr>")
+   end,
 })

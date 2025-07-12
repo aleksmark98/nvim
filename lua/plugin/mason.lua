@@ -10,11 +10,11 @@ return {
          "zls",
       },
    },
-   event = {"VeryLazy"}, -- not sure if this breaks anything
+   event = { "VeryLazy" }, -- not sure if this breaks anything
    dependencies = {
       {
          "mason-org/mason.nvim",
-         cmd = {"Mason"},
+         cmd = { "Mason" },
          opts = {
             -- this doesn't work anymore :(
             -- ensure_installed = {

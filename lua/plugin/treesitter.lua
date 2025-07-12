@@ -1,9 +1,9 @@
 return {
    {
-      'nvim-treesitter/nvim-treesitter',
+      "nvim-treesitter/nvim-treesitter",
       lazy = false,
       config = function()
-         require'nvim-treesitter.configs'.setup {
+         require("nvim-treesitter.configs").setup({
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
             ensure_installed = { "c", "cpp", "r", "cuda", "lua", "vim", "vimdoc", "markdown", "latex", "python", "zig" },
             ignore_install = { "latex" },
@@ -23,12 +23,12 @@ return {
                -- Using this option may slow down your editor, and you may see some duplicate highlights.
                -- Instead of true it can also be a list of languages
                -- additional_vim_regex_highlighting = false,
-               additional_vim_regex_highlighting = {"latex"},
+               additional_vim_regex_highlighting = { "latex" },
             },
             indent = {
-               enable = true
+               enable = true,
             },
-         }
+         })
 
          -- vim.opt.foldmethod = "expr"
          -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -39,16 +39,16 @@ return {
          -- vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
       end,
    },
-   {  -- sticky function definitions
-      'nvim-treesitter/nvim-treesitter-context',
+   { -- sticky function definitions
+      "nvim-treesitter/nvim-treesitter-context",
       event = "VeryLazy",
       dependencies = {
-         'nvim-treesitter/nvim-treesitter'
+         "nvim-treesitter/nvim-treesitter",
       },
       opts = {},
    },
    {
-      'mizlan/iswap.nvim',
+      "mizlan/iswap.nvim",
       keys = {
          { "<leader>is", "<cmd>ISwapWith<CR>" },
          { "<leader>in", "<cmd>ISwapNodeWith<CR>" },
@@ -58,23 +58,23 @@ return {
       opts = {
          -- The keys that will be used as a selection, in order
          -- ('asdfghjklqwertyuiopzxcvbnm' by default)
-         keys = 'asdfghjklqwertyuiopzxcvbnm',
+         keys = "asdfghjklqwertyuiopzxcvbnm",
 
          -- Grey out the rest of the text when making a selection
          -- (enabled by default)
-         grey = 'disable',
+         grey = "disable",
 
          -- Highlight group for the sniping value (asdf etc.)
          -- default 'Search'
-         hl_snipe = 'ErrorMsg',
+         hl_snipe = "ErrorMsg",
 
          -- Highlight group for the visual selection of terms
          -- default 'Visual'
-         hl_selection = 'Visual',
+         hl_selection = "Visual",
 
          -- Highlight group for the greyed background
          -- default 'Comment'
-         hl_grey = 'Comment',
+         hl_grey = "Comment",
 
          -- Post-operation flashing highlight style,
          -- either 'simultaneous' or 'sequential', or false to disable
@@ -84,7 +84,7 @@ return {
          -- Highlight group for flashing highlight afterward
          -- default 'IncSearch'
          --hl_flash = 'ModeMsg',
-         hl_flash = 'IncSearch',
+         hl_flash = "IncSearch",
 
          -- Move cursor to the other element in ISwap*With commands
          -- default false
@@ -97,19 +97,19 @@ return {
    },
    {
       -- keeping this for TreeSitter buffer navigation
-      'stevearc/aerial.nvim',
-      cmd = { 'AerialNavToggle' },
+      "stevearc/aerial.nvim",
+      cmd = { "AerialNavToggle" },
       config = function()
-         require('aerial').setup({
+         require("aerial").setup({
             -- backends = { "lsp", "treesitter", "markdown", "man" },
             backends = { "treesitter", "markdown", "man" },
          })
 
-         require('telescope').load_extension('aerial')
+         require("telescope").load_extension("aerial")
       end,
       dependencies = {
          "nvim-treesitter/nvim-treesitter",
-         "nvim-tree/nvim-web-devicons"
+         "nvim-tree/nvim-web-devicons",
       },
    },
 }

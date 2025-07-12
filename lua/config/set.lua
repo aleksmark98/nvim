@@ -1,11 +1,11 @@
 --vim.opt.guicursor = ""
-vim.g.python_host_prog = '/opt/homebrew/bin/python3'
-vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+vim.g.python_host_prog = "/opt/homebrew/bin/python3"
+vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
 
 vim.opt.nu = true
 vim.opt.relativenumber = false
 vim.opt.numberwidth = 1
-vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- hide command line - appear over the statusline when used
 vim.o.cmdheight = 0
@@ -46,15 +46,14 @@ vim.opt.updatetime = 50
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-
 -- LSP SETTINGS
 vim.diagnostic.config({
-   virtual_text = {current_line = true },
+   virtual_text = { current_line = true },
    signs = {},
 })
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = 'single'
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+   opts = opts or {}
+   opts.border = "single"
+   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end

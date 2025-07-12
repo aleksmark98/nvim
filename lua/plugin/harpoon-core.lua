@@ -1,22 +1,22 @@
 return {
    -- TODO: set that harpoon window opens in place rather than shifting focus
-   'MeanderingProgrammer/harpoon-core.nvim',
+   "MeanderingProgrammer/harpoon-core.nvim",
    keys = {
-      { '<leader>!' },
-      { '<leader>@' },
-      { '<leader>#' },
-      { '<leader>$' },
-      { '<leader>%' },
-      { '<leader>ha' },
-      { '<leader>hr' },
-      { '<leader>hu' },
-      { '<leader>hn' },
-      { '<leader>hp' },
-      { '<leader>ht' },
+      { "<leader>!" },
+      { "<leader>@" },
+      { "<leader>#" },
+      { "<leader>$" },
+      { "<leader>%" },
+      { "<leader>ha" },
+      { "<leader>hr" },
+      { "<leader>hu" },
+      { "<leader>hn" },
+      { "<leader>hp" },
+      { "<leader>ht" },
    },
-   dependencies = { 'nvim-telescope/telescope.nvim', Lazy=true },
+   dependencies = { "nvim-telescope/telescope.nvim", Lazy = true },
    config = function()
-      require('harpoon-core').setup({
+      require("harpoon-core").setup({
          -- Make existing window active rather than creating a new window
          use_existing = true,
          -- Default action when opening a mark, defaults to current window
@@ -31,29 +31,38 @@ return {
          -- Controls confirmation when deleting mark in telescope
          delete_confirmation = true,
       })
-      require('telescope').load_extension('harpoon-core')
+      require("telescope").load_extension("harpoon-core")
 
       ---@param lhs string
       ---@param rhs string|function
       ---@param desc string
       local function map(lhs, rhs, desc)
-         vim.keymap.set('n', lhs, rhs, { desc = desc })
+         vim.keymap.set("n", lhs, rhs, { desc = desc })
       end
-      local mark = require('harpoon-core.mark')
-      local ui = require('harpoon-core.ui')
+      local mark = require("harpoon-core.mark")
+      local ui = require("harpoon-core.ui")
 
-      vim.keymap.set('n', '<leader>!', function() ui.nav_file(1) end, { desc = 'Harpoon open file 1' })
-      vim.keymap.set('n', '<leader>@', function() ui.nav_file(2) end, { desc = 'Harpoon open file 2' })
-      vim.keymap.set('n', '<leader>#', function() ui.nav_file(3) end, { desc = 'Harpoon open file 3' })
-      vim.keymap.set('n', '<leader>$', function() ui.nav_file(4) end, { desc = 'Harpoon open file 4' })
-      vim.keymap.set('n', '<leader>%', function() ui.nav_file(5) end, { desc = 'Harpoon open file 5' })
+      vim.keymap.set("n", "<leader>!", function()
+         ui.nav_file(1)
+      end, { desc = "Harpoon open file 1" })
+      vim.keymap.set("n", "<leader>@", function()
+         ui.nav_file(2)
+      end, { desc = "Harpoon open file 2" })
+      vim.keymap.set("n", "<leader>#", function()
+         ui.nav_file(3)
+      end, { desc = "Harpoon open file 3" })
+      vim.keymap.set("n", "<leader>$", function()
+         ui.nav_file(4)
+      end, { desc = "Harpoon open file 4" })
+      vim.keymap.set("n", "<leader>%", function()
+         ui.nav_file(5)
+      end, { desc = "Harpoon open file 5" })
 
-      map('<leader>ha', mark.add_file, 'Add current file')
-      map('<leader>hr', mark.rm_file, 'Remove current file')
-      map('<leader>hu', ui.toggle_quick_menu, 'Toggle UI')
-      map('<leader>hn', ui.nav_next, 'Next file')
-      map('<leader>hp', ui.nav_prev, 'Previous file')
-      map('<leader>ht', '<cmd>Telescope harpoon-core marks<cr>', 'Telescope menu')
+      map("<leader>ha", mark.add_file, "Add current file")
+      map("<leader>hr", mark.rm_file, "Remove current file")
+      map("<leader>hu", ui.toggle_quick_menu, "Toggle UI")
+      map("<leader>hn", ui.nav_next, "Next file")
+      map("<leader>hp", ui.nav_prev, "Previous file")
+      map("<leader>ht", "<cmd>Telescope harpoon-core marks<cr>", "Telescope menu")
    end,
 }
-

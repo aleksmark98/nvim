@@ -1,149 +1,151 @@
-return
-   {
-      "saghen/blink.cmp",
-      version = "1.*",
-      opts_extend = {
-         "sources.completion.enabled_providers",
-         "sources.compat",
-         "sources.default",
+return {
+   "saghen/blink.cmp",
+   version = "1.*",
+   opts_extend = {
+      "sources.completion.enabled_providers",
+      "sources.compat",
+      "sources.default",
+   },
+   dependencies = {
+      "rafamadriz/friendly-snippets",
+      -- add blink.compat to dependencies
+      {
+         "saghen/blink.compat",
+         optional = true, -- make optional so it's only enabled if any extras need it
+         opts = {},
+         -- version = not vim.g.lazyvim_blink_main and "*",
       },
-      dependencies = {
-         "rafamadriz/friendly-snippets",
-         -- add blink.compat to dependencies
-         {
-            "saghen/blink.compat",
-            optional = true, -- make optional so it's only enabled if any extras need it
-            opts = {},
-            -- version = not vim.g.lazyvim_blink_main and "*",
-         },
+   },
+   -- event = "InsertEnter",
+   event = "VeryLazy",
+
+   ---@module 'blink.cmp'
+   ---@type blink.cmp.Config
+   opts = {
+      appearance = {
+         -- sets the fallback highlight groups to nvim-cmp's highlight groups
+         -- useful for when your theme doesn't support blink.cmp
+         -- will be removed in a future release, assuming themes add support
+         use_nvim_cmp_as_default = false,
+         -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+         -- adjusts spacing to ensure icons are aligned
+         nerd_font_variant = "mono",
       },
-      -- event = "InsertEnter",
-      event = "VeryLazy",
+      completion = {
+         list = { selection = { preselect = false, auto_insert = true } },
 
-      ---@module 'blink.cmp'
-      ---@type blink.cmp.Config
-      opts = {
-         appearance = {
-            -- sets the fallback highlight groups to nvim-cmp's highlight groups
-            -- useful for when your theme doesn't support blink.cmp
-            -- will be removed in a future release, assuming themes add support
-            use_nvim_cmp_as_default = false,
-            -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-            -- adjusts spacing to ensure icons are aligned
-            nerd_font_variant = "mono",
-         },
-         completion = {
-            list = { selection = { preselect = false, auto_insert = true } },
-
-            accept = {
-               -- experimental auto-brackets support
-               auto_brackets = {
-                  enabled = true,
-               },
-            },
-            menu = {
-               draw = {
-                  treesitter = { "lsp" },
-               },
-            },
-            documentation = {
-               auto_show = true,
-               auto_show_delay_ms = 200,
-            },
-            ghost_text = {
-               enabled = vim.g.ai_cmp,
+         accept = {
+            -- experimental auto-brackets support
+            auto_brackets = {
+               enabled = true,
             },
          },
-
-         -- experimental signature help support
-         -- show documentation doesn't work for me
-         signature = { enabled = true, },
-
-         sources = {
-            -- adding any nvim-cmp sources here will enable them
-            -- with blink.compat
-            compat = {},
-            default = { "lsp", "path", "snippets", "buffer" },
-         },
-
-         cmdline = {
-            enabled = true,
-
-            keymap = { preset = "cmdline" },
-            sources = { 'buffer', 'cmdline' },
-
-            -- list = {
-            --    selection = {
-            --       -- When `true`, will automatically select the first item in the completion list
-            --       preselect = false,
-            --       -- When `true`, inserts the completion item automatically when selecting it
-            --       auto_insert = true,
-            --    },
-            -- },
-            -- -- Whether to automatically show the window when new completion items are available
-            -- menu = { auto_show = true },
-            -- -- Displays a preview of the selected item on the current line
-            -- ghost_text = { enabled = true },
-         },
-
-         keymap = {
-            preset = "default",
-            ['<Tab>'] = {
-               function(cmp)
-                  if cmp.snippet_active() then return cmp.accept()
-                  else return cmp.select_and_accept() end
-               end,
-               'snippet_forward',
-               'fallback'
+         menu = {
+            draw = {
+               treesitter = { "lsp" },
             },
+         },
+         documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 200,
+         },
+         ghost_text = {
+            enabled = vim.g.ai_cmp,
          },
       },
-      ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
-      config = function(_, opts)
-         -- setup compat sources
-         local enabled = opts.sources.default
-         for _, source in ipairs(opts.sources.compat or {}) do
-            opts.sources.providers[source] = vim.tbl_deep_extend(
-               "force",
-               { name = source, module = "blink.compat.source" },
-               opts.sources.providers[source] or {}
-            )
-            if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
-               table.insert(enabled, source)
-            end
-         end
 
-         -- Unset custom prop to pass blink.cmp validation
-         opts.sources.compat = nil
+      -- experimental signature help support
+      -- show documentation doesn't work for me
+      signature = { enabled = true },
 
-         -- check if we need to override symbol kinds
-         for _, provider in pairs(opts.sources.providers or {}) do
-            ---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
-            if provider.kind then
-               local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-               local kind_idx = #CompletionItemKind + 1
+      sources = {
+         -- adding any nvim-cmp sources here will enable them
+         -- with blink.compat
+         compat = {},
+         default = { "lsp", "path", "snippets", "buffer" },
+      },
 
-               CompletionItemKind[kind_idx] = provider.kind
-               ---@diagnostic disable-next-line: no-unknown
-               CompletionItemKind[provider.kind] = kind_idx
+      cmdline = {
+         enabled = true,
 
-               ---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
-               local transform_items = provider.transform_items
-               ---@param ctx blink.cmp.Context
-               ---@param items blink.cmp.CompletionItem[]
-               provider.transform_items = function(ctx, items)
-                  items = transform_items and transform_items(ctx, items) or items
-                  for _, item in ipairs(items) do
-                     item.kind = kind_idx or item.kind
-                  end
-                  return items
+         keymap = { preset = "cmdline" },
+         sources = { "buffer", "cmdline" },
+
+         -- list = {
+         --    selection = {
+         --       -- When `true`, will automatically select the first item in the completion list
+         --       preselect = false,
+         --       -- When `true`, inserts the completion item automatically when selecting it
+         --       auto_insert = true,
+         --    },
+         -- },
+         -- -- Whether to automatically show the window when new completion items are available
+         -- menu = { auto_show = true },
+         -- -- Displays a preview of the selected item on the current line
+         -- ghost_text = { enabled = true },
+      },
+
+      keymap = {
+         preset = "default",
+         ["<Tab>"] = {
+            function(cmp)
+               if cmp.snippet_active() then
+                  return cmp.accept()
+               else
+                  return cmp.select_and_accept()
                end
-
-               -- Unset custom prop to pass blink.cmp validation
-               provider.kind = nil
-            end
+            end,
+            "snippet_forward",
+            "fallback",
+         },
+      },
+   },
+   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
+   config = function(_, opts)
+      -- setup compat sources
+      local enabled = opts.sources.default
+      for _, source in ipairs(opts.sources.compat or {}) do
+         opts.sources.providers[source] = vim.tbl_deep_extend(
+            "force",
+            { name = source, module = "blink.compat.source" },
+            opts.sources.providers[source] or {}
+         )
+         if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
+            table.insert(enabled, source)
          end
+      end
 
-         require("blink.cmp").setup(opts)
-      end,
-   }
+      -- Unset custom prop to pass blink.cmp validation
+      opts.sources.compat = nil
+
+      -- check if we need to override symbol kinds
+      for _, provider in pairs(opts.sources.providers or {}) do
+         ---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
+         if provider.kind then
+            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+            local kind_idx = #CompletionItemKind + 1
+
+            CompletionItemKind[kind_idx] = provider.kind
+            ---@diagnostic disable-next-line: no-unknown
+            CompletionItemKind[provider.kind] = kind_idx
+
+            ---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
+            local transform_items = provider.transform_items
+            ---@param ctx blink.cmp.Context
+            ---@param items blink.cmp.CompletionItem[]
+            provider.transform_items = function(ctx, items)
+               items = transform_items and transform_items(ctx, items) or items
+               for _, item in ipairs(items) do
+                  item.kind = kind_idx or item.kind
+               end
+               return items
+            end
+
+            -- Unset custom prop to pass blink.cmp validation
+            provider.kind = nil
+         end
+      end
+
+      require("blink.cmp").setup(opts)
+   end,
+}

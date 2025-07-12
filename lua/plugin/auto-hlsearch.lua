@@ -1,5 +1,5 @@
 return {
-   'asiryk/auto-hlsearch.nvim',
-   event = {"VeryLazy"},
+   "asiryk/auto-hlsearch.nvim",
+   event = { "VeryLazy" },
    opts = {},
 }

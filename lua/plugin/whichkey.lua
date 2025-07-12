@@ -3,7 +3,7 @@ return {
       "folke/which-key.nvim",
       keys = {
          -- by default it clashes with diffview
-         "<leader>?" 
+         "<leader>?",
       },
       init = function()
          vim.o.timeout = true
@@ -13,6 +13,6 @@ return {
          -- your configuration comes here
          -- or leave it empty to use the default settings
          -- refer to the configuration section below
-      }
-   }
+      },
+   },
 }

@@ -1,7 +1,6 @@
 return {
-   'echasnovski/mini.align',
-   version = '*',
+   "echasnovski/mini.align",
+   version = "*",
    event = "VeryLazy",
-   opts  = {},
+   opts = {},
 }
-

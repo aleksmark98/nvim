@@ -34,20 +34,21 @@ return {
       formatters = {
          clang_format = {
             prepend_args = {
-               '--style=file',
-               '--fallback-style={BasedOnStyle: llvm, IndentWidth: 3}'
+               "--style=file",
+               "--fallback-style={BasedOnStyle: llvm, IndentWidth: 3}",
             },
          },
-         shfmt = {
-            prepend_args = { "-i", "3" },
-         },
+         shfmt = { prepend_args = { "-i", "3" } },
          stylua = {
-            prepend_args = {
-               '--indent-type Spaces'
-            }
-         }
+            append_args = {
+               "--indent-type",
+               "Spaces",
+               "--indent-width",
+               "3",
+            },
+         },
       },
-		["*"] = { "trim_whitespace" },
+      ["*"] = { "trim_whitespace" },
    },
    init = function()
       -- If you want the formatexpr, here is the place to set it

@@ -1,9 +1,9 @@
 return {
-   'sindrets/diffview.nvim',
+   "sindrets/diffview.nvim",
    cmd = {
-      'DiffviewOpen',
-      'DiffviewClose',
-      'DiffviewFileHistory',
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewFileHistory",
    },
    init = function()
       vim.cmd("cnoreabbrev dvo DiffviewOpen")
@@ -15,16 +15,19 @@ return {
       local actions = require("diffview.actions")
       require("diffview").setup({
          keymaps = {
+            -- stylua: ignore
             view = {
                { "n", "<c-n>",          actions.select_next_entry,              { desc = "Open the diff for the next file" } },
                { "n", "<c-p>",          actions.select_prev_entry,              { desc = "Open the diff for the previous file" } },
             },
+            -- stylua: ignore
             file_panel = {
                { "n", "<c-u>",          actions.scroll_view(-0.25),             { desc = "Scroll the view up" } },
                { "n", "<c-d>",          actions.scroll_view(0.25),              { desc = "Scroll the view down" } },
                { "n", "<c-n>",          actions.select_next_entry,              { desc = "Open the diff for the next file" } },
                { "n", "<c-p>",          actions.select_prev_entry,              { desc = "Open the diff for the previous file" } },
             },
+            -- stylua: ignore
             file_history_panel = {
                { "n", "<c-u>",         actions.scroll_view(-0.25),          { desc = "Scroll the view up" } },
                { "n", "<c-d>",         actions.scroll_view(0.25),           { desc = "Scroll the view down" } },
