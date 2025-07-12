@@ -1,3 +1,8 @@
+Decided on TODOs:
+-----------------
+
+Ideas/plugins to experiment with:
+---------------------------------
 blink.cmp
    - promises of completion being faster and snappier
    - the setup looks less convoluted
@@ -39,6 +44,9 @@ tree-sitter-textobjects
    - set up swapping - remote iswap
    - plug in nvim-surround
 
+tabout
+   - https://github.com/abecodes/tabout.nvim
+   - press tab to jump out of a pair
 experiment with a sessionizer
 
 Git integration
@@ -46,4 +54,14 @@ Git integration
       - lacks git blame for a line
       - lacks hunk staging
    - look into git integration of that
+   - https://github.com/airblade/vim-gitgutter
+      - hunk text objects
+      - preview, stage and undo hunks
+   - tpope/vim-fugitive
+      - classic git integration
+      - got it only for :G blame
+   - https://github.com/FabijanZulj/blame.nvim
+
+WezTerm pane integrations
+   - https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
 
