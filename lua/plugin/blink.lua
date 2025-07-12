@@ -72,18 +72,18 @@ return
             keymap = { preset = "cmdline" },
             sources = { 'buffer', 'cmdline' },
 
-            list = {
-               selection = {
-                  -- When `true`, will automatically select the first item in the completion list
-                  preselect = false,
-                  -- When `true`, inserts the completion item automatically when selecting it
-                  auto_insert = true,
-               },
-            },
-            -- Whether to automatically show the window when new completion items are available
-            menu = { auto_show = true },
-            -- Displays a preview of the selected item on the current line
-            ghost_text = { enabled = true },
+            -- list = {
+            --    selection = {
+            --       -- When `true`, will automatically select the first item in the completion list
+            --       preselect = false,
+            --       -- When `true`, inserts the completion item automatically when selecting it
+            --       auto_insert = true,
+            --    },
+            -- },
+            -- -- Whether to automatically show the window when new completion items are available
+            -- menu = { auto_show = true },
+            -- -- Displays a preview of the selected item on the current line
+            -- ghost_text = { enabled = true },
          },
 
          keymap = {
