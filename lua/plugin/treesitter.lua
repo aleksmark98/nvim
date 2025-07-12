@@ -30,23 +30,23 @@ return {
             },
          }
 
-         vim.opt.foldmethod = "expr"
-         vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-         vim.opt.foldenable = false
-         vim.opt.foldlevel = 99
+         -- vim.opt.foldmethod = "expr"
+         -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+         -- vim.opt.foldenable = true
+         -- vim.opt.foldlevel = 99
 
-         -- hack to enable folding in files opened with Telescope, see issue https://github.com/nvim-telescope/telescope.nvim/issues/699
-         vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
+         -- -- hack to enable folding in files opened with Telescope, see issue https://github.com/nvim-telescope/telescope.nvim/issues/699
+         -- vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
       end,
    },
-   {
+   {  -- sticky function definitions
       'nvim-treesitter/nvim-treesitter-context',
       event = "VeryLazy",
       dependencies = {
          'nvim-treesitter/nvim-treesitter'
       },
       opts = {},
-   }, -- sticky function definitions
+   },
    {
       'mizlan/iswap.nvim',
       keys = {
