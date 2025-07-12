@@ -8,7 +8,8 @@ return {
    init = function()
       vim.cmd("cnoreabbrev dvo DiffviewOpen")
       vim.cmd("cnoreabbrev dvc DiffviewClose")
-      vim.cmd("cnoreabbrev dvh DiffviewFileHistory")
+      -- dvl for diffview log - like a git log with diffview diffs
+      vim.cmd("cnoreabbrev dvl DiffviewFileHistory")
    end,
    config = function()
       local actions = require("diffview.actions")
