@@ -5,8 +5,9 @@ return {
          {'<leader>ff',  '<cmd>Telescope find_files<CR>'}, -- uses FZF via an extention
          {'<leader>gr',  '<cmd>lua FZF_THEN_GREP()<CR>'}, -- native - uses ripgrep without args;
          {'<leader>rg',  '<cmd>Telescope live_grep<CR>'}, -- native - uses ripgrep without args;
+         {'<leader>rs',  '<cmd>Telescope grep_string<CR>'},
          {'<leader>rh',  "<cmd>lua require'telescope.builtin'.live_grep({ layout_strategy='horizontal' })<CR>"},
-         {'<leader>nvc',  "<cmd>lua require'telescope.builtin'.live_grep({ cwd='~/.config/nvim/' })<CR>"},
+         {'<leader>nvc', "<cmd>lua require'telescope.builtin'.live_grep({ cwd='~/.config/nvim/' })<CR>"},
          {'<leader>fb',  '<cmd>Telescope buffers<CR>'}, -- can be done natively with ":ls<cr>:b<space>"
          {'<leader>fh',  '<cmd>Telescope help_tags<CR>'},
          {'<leader>ld',  '<cmd>Telescope lsp_definitions<CR>'},
@@ -29,7 +30,19 @@ return {
          telescope.setup {
             defaults = {
                layout_strategy = 'vertical',
-               layout_config = { height = 0.99, width = 0.99 },
+               -- layout_config = { height = 0.99, width = 0.99 },
+               layout_config = {
+                  prompt_position = "top",  -- search bar at the top
+                  height = 0.99,
+                  width = 0.99,
+               },
+               sorting_strategy = 'ascending',  -- display results top->bottom
+
+               mappings = {
+                  n = {
+                     ['<M-x>'] = require('telescope.actions').delete_buffer,
+                  }
+               },
             },
             pickers = {
                git_commits = {
@@ -38,13 +51,19 @@ return {
                git_bcommits = {
                   initial_mode = "normal",
                },
+               git_status = {
+                  initial_mode = "normal",
+               },
                lsp_references = {
                   initial_mode = "normal",
                },
                diagnostics = {
                   initial_mode = "normal",
                },
-               git_status = {
+               grep_string = {
+                  initial_mode = "normal",
+               },
+               buffers = {
                   initial_mode = "normal",
                },
             },
