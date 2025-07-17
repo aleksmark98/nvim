@@ -33,17 +33,29 @@ return {
             --- function will be called with a ColorScheme table
             ---@param cl ColorScheme
             on_colors = function(cl)
-               --colors.hint = colors.orange
                cl.error = "#ff0000"
                cl.green = "#999999" -- a dirty way to recolor strings
-               --cl.comment = "#636da6"
             end,
 
             --- You can override specific highlights to use other groups or a hex color
             --- function will be called with a Highlights and ColorScheme table
             ---@param hl Highlights
             ---@param cl ColorScheme
-            on_highlights = function(hl, cl) end,
+            on_highlights = function(hl, cl)
+               hl.WinSeparator = {
+                  bold = true,
+                  fg = cl.fg_dark,
+               }
+               hl.LineNr = {
+                  fg = cl.fg_dark
+               }
+               hl.TelescopeNormal = {
+                  fg = cl.fg_dark,
+               }
+               hl.TelescopeBorder = {
+                  fg = cl.bg_dark,
+               }
+            end,
          })
          vim.cmd([[colorscheme tokyonight]])
       end,
