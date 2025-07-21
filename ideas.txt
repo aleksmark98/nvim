@@ -57,9 +57,6 @@ Git integration
    - https://github.com/airblade/vim-gitgutter
       - hunk text objects
       - preview, stage and undo hunks
-   - tpope/vim-fugitive
-      - classic git integration
-      - got it only for :G blame
    - https://github.com/FabijanZulj/blame.nvim
 
 WezTerm pane integrations
