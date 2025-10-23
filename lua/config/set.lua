@@ -30,6 +30,8 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 
+vim.opt.clipboard = "unnamed"
+
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
