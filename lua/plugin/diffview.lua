@@ -14,6 +14,10 @@ return {
    config = function()
       local actions = require("diffview.actions")
       require("diffview").setup({
+         enhanced_diff_hl = true,
+         default_args = {    -- Default args prepended to the arg-list for the listed commands
+            DiffviewOpen = { "--imply-local" },
+         },
          keymaps = {
             -- stylua: ignore
             view = {
