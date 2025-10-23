@@ -1,8 +1,24 @@
 return {
 	"chrisgrieser/nvim-origami",
 	event = "VeryLazy",
-	opts = {}, -- needed even when using default config
-
+	opts = {
+      foldtext = {
+         enabled = false,
+         padding = 3,
+         lineCount = {
+            template = "%d lines", -- `%d` is replaced with the number of folded lines
+            hlgroup = "Comment",
+         },
+      },
+      foldKeymaps = {
+         setup = false, -- modifies `h`, `l`, and `$`
+         hOnlyOpensOnFirstColumn = true,
+      },
+      autoFold = {
+         enabled = false,
+         kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
+      },
+   }, -- needed even when using default config
 	-- recommended: disable vim's auto-folding
 	init = function()
 		vim.opt.foldlevel = 99
