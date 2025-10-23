@@ -17,6 +17,12 @@ return {
          vim.keymap.set("", "S", function()
             hop.hint_char1({})
          end, { remap = true })
+         vim.keymap.set("", "<leader>ha", function()
+            hop.hint_anywhere({})
+         end, { remap = true })
+         vim.keymap.set("", "<leader>hl", function()
+            hop.hint_lines({})
+         end, { remap = true })
 
          local jump_target = require("hop.jump_target")
          local set = vim.keymap.set
