@@ -1,6 +1,6 @@
 return {
-   "mbbill/undotree",
-   keys = {
-      { "<leader>ut", vim.cmd.UndotreeShow },
-   },
+   -- "mbbill/undotree",
+   -- keys = {
+   --    { "<leader>ut", vim.cmd.UndotreeShow },
+   -- },
 }
