@@ -47,17 +47,8 @@ tree-sitter-textobjects
 tabout
    - https://github.com/abecodes/tabout.nvim
    - press tab to jump out of a pair
-experiment with a sessionizer
 
-Git integration
-   - diffview is great for diffs, basic staging and file history, BUT
-      - lacks git blame for a line
-      - lacks hunk staging
-   - look into git integration of that
-   - https://github.com/airblade/vim-gitgutter
-      - hunk text objects
-      - preview, stage and undo hunks
-   - https://github.com/FabijanZulj/blame.nvim
+experiment with a sessionizer
 
 WezTerm pane integrations
    - https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
