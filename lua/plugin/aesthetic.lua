@@ -47,7 +47,7 @@ return {
                   fg = cl.fg_dark,
                }
                hl.LineNr = {
-                  fg = cl.fg_dark
+                  fg = cl.fg_dark,
                }
                hl.TelescopeNormal = {
                   fg = cl.fg_dark,
@@ -64,21 +64,36 @@ return {
       "nvim-lualine/lualine.nvim",
       as = "lualine",
       event = "VeryLazy",
-      dependencies = { "nvim-tree/nvim-web-devicons", opt = true, lazy = true },
+      -- dependencies = { "nvim-tree/nvim-web-devicons",{'kdheepak/tabline.nvim', opts={options={show_tabs_only = true}}}, opt = true, lazy = true },
+      dependencies = { "nvim-tree/nvim-web-devicons", opt = true, lazy = false },
       config = function()
          local custom_moonfly = require("lualine.themes.moonfly")
          -- Change the background of lualine_c section for normal mode
          custom_moonfly.normal.b.bg = nil
          custom_moonfly.normal.c.bg = nil
 
+         -- disable tabline, as tabs are in lualine
+         vim.o.showtabline = 0
+
          require("lualine").setup({
             options = {
+               always_show_tabline = false, -- When set to true, if you have configured lualine for displaying tabline
+
                theme = custom_moonfly,
                icons_enabled = false,
                section_separators = { left = "", right = "" },
                component_separators = { left = "", right = "" },
             },
             sections = {
+               lualine_a = { "mode" },
+               lualine_b = { "branch", "diff", "diagnostics" },
+               lualine_c = {
+                  {
+                     "tabs",
+                     mode = 1, -- shows tabname
+                     path = 1, -- relative path
+                  },
+               },
                lualine_x = {},
                lualine_y = { "searchcount", "selectioncount" },
                lualine_z = { "location", "progress" },
