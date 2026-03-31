@@ -2,17 +2,23 @@ return {
    {
       "nvim-telescope/telescope.nvim",
       keys = {
+         -- navigate files/buffers
          { "<leader>ff", "<cmd>Telescope find_files<CR>" }, -- uses FZF via an extention
+         { "<leader>fb", "<cmd>Telescope buffers<CR>" }, -- can be done natively with ":ls<cr>:b<space>"
+
+         -- navigate with text search
          { "<leader>gr", "<cmd>lua FZF_THEN_GREP()<CR>" }, -- native - uses ripgrep without args;
          { "<leader>rg", "<cmd>Telescope live_grep<CR>" }, -- native - uses ripgrep without args;
          { "<leader>rs", "<cmd>Telescope grep_string<CR>" },
-         { "<leader>rh", "<cmd>lua require'telescope.builtin'.live_grep({ layout_strategy='horizontal' })<CR>" },
-         { "<leader>nvc", "<cmd>lua require'telescope.builtin'.live_grep({ cwd='~/.config/nvim/' })<CR>" },
-         { "<leader>fb", "<cmd>Telescope buffers<CR>" }, -- can be done natively with ":ls<cr>:b<space>"
-         { "<leader>fh", "<cmd>Telescope help_tags<CR>" },
+
+         -- navigate with LSP/code
          { "<leader>ld", "<cmd>Telescope lsp_definitions<CR>" },
          { "<leader>lr", "<cmd>Telescope lsp_references<CR>" },
          { "<leader>fd", "<cmd>Telescope diagnostics<CR>" },
+         { "<leader>ls", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>" },
+
+         -- other
+         { "<leader>fh", "<cmd>Telescope help_tags<CR>" },
       },
       cmd = { "Telescope" },
       tag = "0.1.8",
@@ -37,6 +43,8 @@ return {
                mappings = {
                   n = {
                      ["<M-x>"] = require("telescope.actions").delete_buffer,
+                     ["<M-c>"] = require("telescope.actions.layout").cycle_layout_next,
+                     ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
                   },
                },
             },

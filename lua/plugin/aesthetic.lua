@@ -63,28 +63,51 @@ return {
    {
       "nvim-lualine/lualine.nvim",
       as = "lualine",
-      event = "VeryLazy",
+      priority = 1000,
+      lazy = false,
+      -- event = "VeryLazy",
       -- dependencies = { "nvim-tree/nvim-web-devicons",{'kdheepak/tabline.nvim', opts={options={show_tabs_only = true}}}, opt = true, lazy = true },
       dependencies = { "nvim-tree/nvim-web-devicons", opt = true, lazy = false },
       config = function()
          local custom_moonfly = require("lualine.themes.moonfly")
-         -- Change the background of lualine_c section for normal mode
-         custom_moonfly.normal.b.bg = nil
-         custom_moonfly.normal.c.bg = nil
+         local darkgray = "#1f1f1f"
+         local blue = "#83a5f8"
+         custom_moonfly.normal.a.bg = "#bbbbbb"
+         custom_moonfly.normal.b.bg = darkgray
+         custom_moonfly.normal.c.bg = darkgray
+         custom_moonfly.visual.a.bg = blue
 
          -- disable tabline, as tabs are in lualine
-         vim.o.showtabline = 0
+         -- vim.o.showtabline = 0
+         -- vim.o.laststatus = 0
 
          require("lualine").setup({
             options = {
-               always_show_tabline = false, -- When set to true, if you have configured lualine for displaying tabline
+               always_show_tabline = true, -- When set to true, if you have configured lualine for displaying tabline
 
                theme = custom_moonfly,
                icons_enabled = false,
                section_separators = { left = "", right = "" },
                component_separators = { left = "", right = "" },
             },
-            sections = {
+            -- sections = {
+            --    lualine_a = { "mode" },
+            --    lualine_b = { "branch", "diff", "diagnostics" },
+            --    lualine_c = {
+            --       {
+            --          "tabs",
+            --          mode = 1, -- shows tabname
+            --          path = 1, -- relative path
+            --       },
+            --    },
+            --    lualine_x = {},
+            --    lualine_y = { "searchcount", "selectioncount" },
+            --    lualine_z = { "location", "progress" },
+            -- },
+
+            sections = {},
+            inactive_sections = {},
+            tabline = {
                lualine_a = { "mode" },
                lualine_b = { "branch", "diff", "diagnostics" },
                lualine_c = {

@@ -12,6 +12,7 @@ return {
       vim.cmd("cnoreabbrev dvl DiffviewFileHistory")
    end,
    config = function()
+      vim.opt.diffopt:append { 'algorithm:patience' }
       local actions = require("diffview.actions")
       require("diffview").setup({
          enhanced_diff_hl = true,

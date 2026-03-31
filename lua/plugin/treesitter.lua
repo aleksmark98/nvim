@@ -45,7 +45,9 @@ return {
       dependencies = {
          "nvim-treesitter/nvim-treesitter",
       },
-      opts = {},
+      opts = {
+         enable = false,
+      },
    },
    {
       "mizlan/iswap.nvim",
@@ -111,5 +113,57 @@ return {
          "nvim-treesitter/nvim-treesitter",
          "nvim-tree/nvim-web-devicons",
       },
+   },
+   {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      event = "VeryLazy",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = function()
+         require("nvim-treesitter.configs").setup({
+            textobjects = {
+               move = {
+                  enable = true,
+                  set_jumps = true, -- whether to set jumps in the jumplist
+                  goto_next_start = {
+                     ["]m"] = "@function.outer",
+                     ["]]"] = "@class.outer",
+                  },
+                  goto_next_end = {
+                     ["]M"] = "@function.outer",
+                     ["]["] = "@class.outer",
+                  },
+                  goto_previous_start = {
+                     ["[m"] = "@function.outer",
+                     ["[["] = "@class.outer",
+                  },
+                  goto_previous_end = {
+                     ["[M"] = "@function.outer",
+                     ["[]"] = "@class.outer",
+                  },
+               },
+               select = {
+                  enable = true,
+                  lookahead = true,
+                  keymaps = {
+                     ["af"] = "@function.outer",
+                     ["if"] = "@function.inner",
+                     ["ac"] = "@class.outer",
+                     ["ic"] = "@class.inner",
+                     ["al"] = "@loop.outer",
+                     ["il"] = "@loop.inner",
+                  },
+               },
+            },
+         })
+      end,
+   },
+   {
+      -- incremental selection with Enter and BS
+      "sustech-data/wildfire.nvim",
+      event = "VeryLazy",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = function()
+         require("wildfire").setup()
+      end,
    },
 }

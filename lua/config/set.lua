@@ -9,7 +9,7 @@ vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- hide command line - appear over the statusline when used
 vim.o.cmdheight = 0
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 
 vim.opt.tabstop = 3
 vim.opt.softtabstop = 3
@@ -48,14 +48,34 @@ vim.opt.updatetime = 50
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- LSP SETTINGS
 vim.diagnostic.config({
    virtual_text = { current_line = true },
    signs = {},
 })
+
+-- add border to hover window
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
    opts = opts or {}
    opts.border = "single"
    return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	command = "wincmd T",
+})
+
+-- auto resize splits when the terminal's window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	command = "wincmd =",
+})
+
+-- no auto continue comments on new line
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})

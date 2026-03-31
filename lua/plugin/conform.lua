@@ -19,10 +19,13 @@ return {
       -- Define your formatters
       formatters_by_ft = {
          lua = { "stylua" },
-         python = { "yapf" },
+         python = { "ruff_fix", "ruff_format", lsp_format = "fallback" },
          zig = { "zigfmt" },
          rust = { "rustfmt", lsp_format = "fallback" },
          cpp = { "clang_format" },
+         javascript = { "prettierd", "prettier", stop_after_first = true },
+         typescript = { "prettierd", "prettier", stop_after_first = true },
+         html = { "prettierd", "prettier", stop_after_first = true },
       },
       -- Set default options
       default_format_opts = {
@@ -34,8 +37,9 @@ return {
       formatters = {
          clang_format = {
             prepend_args = {
-               "--style=file",
-               "--fallback-style={BasedOnStyle: llvm, IndentWidth: 3}",
+               "--style={BasedOnStyle: llvm, IndentWidth: 3}",
+
+               -- "--fallback-style={BasedOnStyle: llvm, IndentWidth: 3}",
             },
          },
          shfmt = { prepend_args = { "-i", "3" } },

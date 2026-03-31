@@ -16,7 +16,9 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 
 -- hitting Q more often  than using macros
-vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "q", "<nop>", { noremap = true })
+vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })
+vim.keymap.set("n", "<M-q>", "Q", { noremap = true, desc = "Replay last register" })
 
 vim.keymap.set("n", "<up>", "<cmd>resize +4<CR>")
 vim.keymap.set("n", "<down>", "<cmd>resize -4<CR>")

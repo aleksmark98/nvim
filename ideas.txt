@@ -1,5 +1,17 @@
 Decided on TODOs:
 -----------------
+- trying out quicker.nvim
+- trying out blink.cmp
+- trying out mini.align
+- trying out neotab
+- trying out wildfire - incremental selection
+
+
+TO READ
+-------
+https://neovim.io/doc/user/autocmd.html
+re-read https://seniormars.com/posts/neovim-workflow/
+
 
 Ideas/plugins to experiment with:
 ---------------------------------
@@ -13,18 +25,18 @@ flash.nvim
    - better remote motions than current hacky hop setup
 
 plugin for moving windows:
-   1) extend nvim-window to support swaps - should be doable
-   2) try winshift https://github.com/sindrets/winshift.nvim
+   - try winshift https://github.com/sindrets/winshift.nvim
+   - try extending nvim-window to support swaps - should be doable
 
 improve telescope findfiles root settings
    - is telescope rooter good enough?
 
 improve/learn/replace quickfix+location list
+   - https://github.com/stevearc/quicker.nvim
    - https://github.com/yssl/QFEnter
    - https://github.com/kevinhwang91/nvim-bqf
    - https://github.com/folke/trouble.nvim
       - sidebar, bottombar, looks a lot like VScode
-   - https://github.com/stevearc/quicker.nvim
 
 figure out undotree
    - https://github.com/jiaoshijie/undotree
@@ -37,19 +49,20 @@ learn an aligning plugin
 determine if a FindAndReplace plugin is necesary
    - https://github.com/MagicDuck/grug-far.nvim?tab=readme-ov-file
 
-re-read https://seniormars.com/posts/neovim-workflow/
-
 tree-sitter-textobjects
    - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
    - set up swapping - remote iswap
    - plug in nvim-surround
+   - alternative treesitter-subjects: https://github.com/RRethy/nvim-treesitter-textsubjects
 
 tabout
-   - https://github.com/abecodes/tabout.nvim
    - press tab to jump out of a pair
+   - https://github.com/abecodes/tabout.nvim
+   - https://github.com/kawre/neotab.nvim
+      - does not use treesitter
 
 experiment with a sessionizer
 
-WezTerm pane integrations
-   - https://github.com/mrjones2014/smart-splits.nvim?tab=readme-ov-file
 
+Notes about used plugins
+------------------------
