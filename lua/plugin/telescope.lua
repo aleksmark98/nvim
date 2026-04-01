@@ -1,6 +1,8 @@
 return {
    {
       "nvim-telescope/telescope.nvim",
+      cmd = { "Telescope" },
+      version = "*",
       keys = {
          -- navigate files/buffers
          { "<leader>ff", "<cmd>Telescope find_files<CR>" }, -- uses FZF via an extention
@@ -20,8 +22,6 @@ return {
          -- other
          { "<leader>fh", "<cmd>Telescope help_tags<CR>" },
       },
-      cmd = { "Telescope" },
-      tag = "0.1.8",
       dependencies = {
          { "nvim-lua/plenary.nvim" },
          { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

@@ -42,6 +42,13 @@ vim.cmd("cnoreabbrev viewopt lua print(vim.inspect(vim.opt.")
 vim.api.nvim_create_autocmd("LspAttach", {
    desc = "LSP actions",
    callback = function(event)
+      -- disable LSP semantic highlighting for rust it was loading much later
+      -- than treesitter and causing annoying blinking behavior
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if client and client.name == "rust_analyzer" then
+         client.server_capabilities.semanticTokensProvider = nil
+      end
+
       -- neovim 0.11 completion
       -- local client = vim.lsp.get_client_by_id(event.data.client_id)
       -- if client:supports_method('textDocument/completion') then
